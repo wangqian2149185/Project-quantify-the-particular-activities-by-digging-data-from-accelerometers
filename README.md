@@ -1,0 +1,1 @@
+# Project-quantify-the-particular-activities-by-digging-data-from-accelerometers
