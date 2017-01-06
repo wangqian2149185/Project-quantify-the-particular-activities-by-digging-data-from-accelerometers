@@ -17,34 +17,65 @@ For more details, please visit: http://groupware.les.inf.puc-rio.br/har
 
 The goal of your project is to predict the manner in which they did the exercise. This is the "classe" variable in the training set. You may use any of the other variables to predict with. You should create a report describing how you built your model, how you used cross validation, what you think the expected out of sample error is, and why you made the choices you did. You will also use your prediction model to predict 20 different test cases.
 
+```{r}
+library(knitr)
+library(caret)
+library(rpart)
+#library(rpart.plot)
+#library(rattle)
+#library(randomForest)
+library(corrplot)
+set.seed(2017-01-06)
+```
+
+
 Download the files from the websites supplied:
 
-```{r}
+#```{r}
 urltrain <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
 urltest <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 download.file(url = urltrain, destfile= "/Users/QianWang/Documents/Coursera_8_practicalMachineLearning/week4/training.csv",method = "curl")
 download.file(url=urltest, destfile= "/Users/QianWang/Documents/Coursera_8_practicalMachineLearning/week4/test.csv")
-```
+#```
 
-Read the training and test files:
+Read and clean the datas:
 
 ```{r}
+# training is for the real train and test sets.
 training <- read.table(file = "/Users/QianWang/Documents/Coursera_8_practicalMachineLearning/week4/training.csv", header = T, sep = ",")
+# test is for the 20 quiz questions.
 test <- read.table(file = "/Users/QianWang/Documents/Coursera_8_practicalMachineLearning/week4/test.csv", header = T, sep = ",")
+
+# Some of the variables are flat without much variance, which is uselessful for correlation detection. So we are going to remove them.
+flat <- nearZeroVar(training)
+training <- training[,-flat]
+
+# There are many variables containing NA, which is annoying for later modelling. We are going to remove the variables that are mostly NAs.
+good <- sapply(training,function(x) mean(is.na(x))) <=0.95
+training <- training[,good]
+
+# some of the variables are labeles or identification of the observations. They have nothing to do with the correlation or modelling. We will pick them off the data set.
+training <- training[,-c(1:5)]
+
+# Now, the data is clean. We want to randomly split the data to trainSet and testSet.
+inTrain<- createDataPartition(training$classe,p=0.7,list = F)
+trainSet <- training[inTrain,]
+testSet <- training[-inTrain,]
 ```
 
-Explore the data:
-```{r}
-library(ggplot2)
-pairs(classe~., data = training[,c(1:10,160)])
+Explore the data (roughly check out the correlation among the variables, make sure there are no highly correlated variables to slow down the modelling algorithms):
+```{r fig.width=18, fig.height=18}
+corMatrix <- cor(trainSet[, colnames(trainSet)!="classe"])
+corrplot(corMatrix, order = "FPC", method = "number", type = "lower", 
+         tl.cex = 0.8, tl.col = rgb(0, 0, 0),number.cex = 0.7, number.digits = 2)
 ```
 
 
 Set the model:
 ```{r}
-library(caret)
-training_clc <- training[rowSums(is.na(training[,1:160]))==0,] 
-model_gbm <- train(classe~., data = training_clc, method= "gbm")
+
+#training_clc <- training[rowSums(is.na(training[,1:160]))==0,] 
+#model_gbm <- train(classe~., data = training_clc, method= "gbm")
 
 ```
 
