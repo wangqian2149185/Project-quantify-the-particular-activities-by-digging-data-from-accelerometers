@@ -33,5 +33,20 @@ training <- read.table(file = "/Users/QianWang/Documents/Coursera_8_practicalMac
 test <- read.table(file = "/Users/QianWang/Documents/Coursera_8_practicalMachineLearning/week4/test.csv", header = T, sep = ",")
 ```
 
+Explore the data:
+```{r}
+library(ggplot2)
+pairs(classe~., data = training[,c(1:10,160)])
+```
+
+
+Set the model:
+```{r}
+library(caret)
+training_clc <- training[rowSums(is.na(training[,1:160]))==0,] 
+model_gbm <- train(classe~., data = training_clc, method= "gbm")
+
+```
+
 # To be continued...
 
