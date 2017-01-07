@@ -21,6 +21,7 @@ The goal of your project is to predict the manner in which they did the exercise
 library(knitr)
 library(caret)
 library(rpart)
+library(dplyr)
 #library(rpart.plot)
 #library(rattle)
 #library(randomForest)
@@ -64,20 +65,75 @@ testSet <- training[-inTrain,]
 ```
 
 Explore the data (roughly check out the correlation among the variables, make sure there are no highly correlated variables to slow down the modelling algorithms):
+
 ```{r fig.width=18, fig.height=18}
 corMatrix <- cor(trainSet[, colnames(trainSet)!="classe"])
 corrplot(corMatrix, order = "FPC", method = "number", type = "lower", 
          tl.cex = 0.8, tl.col = rgb(0, 0, 0),number.cex = 0.7, number.digits = 2)
 ```
 
+There are several variables that are highly correlated (>0.90 or < -0.90). In order to save the calculating source, we are going to remove some of the variables.
 
-Set the model:
-```{r}
-
-#training_clc <- training[rowSums(is.na(training[,1:160]))==0,] 
-#model_gbm <- train(classe~., data = training_clc, method= "gbm")
-
+```{r highCorVarRemove}
+trainSet <- trainSet %>%
+        select(-c(accel_belt_y,roll_belt,accel_belt_z,gyros_arm_y,pitch_belt,gyros_dumbbell_z,gyros_dumbbell_x,gyros_forearm_z))
+testSet <- testSet %>%
+        select(-c(accel_belt_y,roll_belt,accel_belt_z,gyros_arm_y,pitch_belt,gyros_dumbbell_z,gyros_dumbbell_x,gyros_forearm_z))
 ```
+
+
+## Modelling and prediction:
+In order to obtain the best modelling, we are going to try three different methods (Generalized Boosted Model, Random Forest, Decison Tree) and pick up the one with most accurate prediction rate by predicting and comparing with the testSet "classe", using the three modelling respectively.
+
+### This is first modelling with methods of "gbm":
+
+```{r gbm}
+set.seed(2017-01-04)
+controlGBM <- trainControl(method = "repeatedcv", number = 5, repeats = 1)
+mod_gbm <- train(classe ~ ., data=trainSet, method = "gbm",
+                    trControl = controlGBM, verbose = FALSE)
+mod_gbm$finalModel
+```
+
+```{r gbm_predict}
+pred_gbm <- predict(mod_gbm, newdata=testSet)
+conf_gbm <- confusionMatrix(pred_gbm, testSet$classe)
+conf_gbm
+```
+
+```{r predict_plot}
+plot(conf_gbm$table, col = conf_gbm$byClass, 
+     main = paste("GBM - Accuracy =", round(conf_gbm$overall['Accuracy'], 4)))
+```
+
+### This is the second modelling with the methods of "rf":
+
+```{r rf}
+set.seed(2017-01-04)
+controlRF <- trainControl(method="cv", number=3, verboseIter=FALSE)
+mod_rf <- train(classe ~ ., data=trainSet, method="rf",
+                          trControl=controlRF)
+mod_rf$finalModel
+```
+
+```{r rf_predict}
+pred_rf <- predict(mod_rf, newdata=testSet)
+conf_rf <- confusionMatrix(pred_rf, testSet$classe)
+conf_rf
+```
+
+```{r predict_plot}
+plot(conf_rf$table, col = conf_rf$byClass, 
+     main = paste("Random Forest - Accuracy =",
+                  round(conf_rf$overall['Accuracy'], 4)))
+```
+
+### This is the third modelling with the methods of "Decision Tree":
+
+
+
+
+
 
 # To be continued...
 
