@@ -137,7 +137,7 @@ plot(conf_gbm$table, col = conf_gbm$byClass,
      main = paste("Accuracy of gbm is ", round(conf_gbm$overall['Accuracy'], 4)))
 ```
 
-![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/gbm_plot-1.png)
+![](gbm_plot-1.png)
 
 ### This is the second modelling with the methods of "rf":
 
@@ -212,7 +212,7 @@ plot(conf_rf$table, col = conf_rf$byClass,
                   round(conf_rf$overall['Accuracy'], 4)))
 ```
 
-![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/rf_plot-1.png)
+![](rf_plot-1.png)
 
 ### This is the third modelling with the methods of "Decision Tree":
 
@@ -223,7 +223,7 @@ mod_dtr <- rpart(classe ~ ., data=trainSet, method="class")
 fancyRpartPlot(mod_dtr)
 ```
 
-![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/dtr-1.png)
+![](dtr-1.png)
 
 ``` r
 # predict the results with the data testSet
@@ -271,7 +271,7 @@ plot(conf_dtr$table, col = conf_dtr$byClass,
                   round(conf_dtr$overall['Accuracy'], 4)))
 ```
 
-![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/dtr_plot-1.png)
+![](dtr_plot-1.png)
 
 Conclusion:
 ===========
