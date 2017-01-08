@@ -11,3 +11,14 @@ Construct models by using three different methods ("Generalized Boosted Models",
 The goal of your project is to predict the manner in which they did the exercise. This is the "classe" variable in the training set. You may use any of the other variables to predict with. You should create a report describing how you built your model, how you used cross validation, what you think the expected out of sample error is, and why you made the choices you did. You will also use your prediction model to predict 20 different test cases.
 
 The codes and the results are shown in the .md file: [Quantifying_activity_by_accelerometers.md](https://github.com/wangqian2149185/Project-quantify-the-particular-activities-by-digging-data-from-accelerometers/blob/master/Quantifying_activity_by_accelerometers.md)
+
+## Components:
+README.md
+dtr-1.png
+dtr_plot-1.png
+gbm_plot-1.png
+rf_plot-1.png
+unnamed-chunk-4-1.png
+`Quantifying_activity_by_accelerometers.md`
+Quantifying_activity_by_accelerometers.Rmd
+
