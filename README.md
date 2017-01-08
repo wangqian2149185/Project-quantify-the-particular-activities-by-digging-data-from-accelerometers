@@ -13,12 +13,12 @@ The goal of your project is to predict the manner in which they did the exercise
 The codes and the results are shown in the .md file: [Quantifying_activity_by_accelerometers.md](https://github.com/wangqian2149185/Project-quantify-the-particular-activities-by-digging-data-from-accelerometers/blob/master/Quantifying_activity_by_accelerometers.md)
 
 ## Components:
-README.md
-dtr-1.png
-dtr_plot-1.png
-gbm_plot-1.png
-rf_plot-1.png
-unnamed-chunk-4-1.png
-`Quantifying_activity_by_accelerometers.md`
-Quantifying_activity_by_accelerometers.Rmd
+* README.md
+* dtr-1.png
+* dtr_plot-1.png
+* gbm_plot-1.png
+* rf_plot-1.png
+* unnamed-chunk-4-1.png
+* `Quantifying_activity_by_accelerometers.md`
+* Quantifying_activity_by_accelerometers.Rmd
 
