@@ -14,6 +14,7 @@ The codes and the results are shown in the .md file: [Quantifying_activity_by_ac
 
 ## Raw data source
 The data set for training: [https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv)
+
 The data set for the 20 quiz test:[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv)
 
 
