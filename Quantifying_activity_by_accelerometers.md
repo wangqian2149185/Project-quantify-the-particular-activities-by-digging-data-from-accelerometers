@@ -60,7 +60,7 @@ corrplot(corGraph, order = "FPC", method = "number", type = "lower",
          tl.cex = 0.8, tl.col = rgb(0, 0, 0),number.cex = 0.7, number.digits = 2)
 ```
 
-![](unnamed-chunk-4-1.png)
+![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/CorrelationMatrix_among_var-1.png)
 
 There are several variables that are highly correlated (&gt;0.90 or &lt; -0.90). In order to save the calculating source, we are going to remove some of the variables.
 
@@ -137,7 +137,7 @@ plot(conf_gbm$table, col = conf_gbm$byClass,
      main = paste("Accuracy of gbm is ", round(conf_gbm$overall['Accuracy'], 4)))
 ```
 
-![](gbm_plot-1.png)
+![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/gbm_plot-1.png)
 
 ### This is the second modelling with the methods of "rf":
 
@@ -212,7 +212,7 @@ plot(conf_rf$table, col = conf_rf$byClass,
                   round(conf_rf$overall['Accuracy'], 4)))
 ```
 
-![](rf_plot-1.png)
+![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/rf_plot-1.png)
 
 ### This is the third modelling with the methods of "Decision Tree":
 
@@ -223,7 +223,7 @@ mod_dtr <- rpart(classe ~ ., data=trainSet, method="class")
 fancyRpartPlot(mod_dtr)
 ```
 
-![](dtr-1.png)
+![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/dtr-1.png)
 
 ``` r
 # predict the results with the data testSet
@@ -271,7 +271,7 @@ plot(conf_dtr$table, col = conf_dtr$byClass,
                   round(conf_dtr$overall['Accuracy'], 4)))
 ```
 
-![](dtr_plot-1.png)
+![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/dtr_plot-1.png)
 
 Conclusion:
 ===========
