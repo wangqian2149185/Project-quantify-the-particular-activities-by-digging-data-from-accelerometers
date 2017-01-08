@@ -19,9 +19,7 @@ The codes and the results are shown in the .md file: [Quantifying_activity_by_ac
 * README.md
 * [Quantifying_activity_by_accelerometers.md](Quantifying_activity_by_accelerometers.md)
 * [Quantifying_activity_by_accelerometers.Rmd](Quantifying_activity_by_accelerometers.Rmd)
-* unnamed-chunk-4-1.png (correlation matrix of variables)
- ![correlation matrix of variables](unnamed-chunk-4-1.png)
-
+* CorrelationMatrix_among_var-1.png![correlation matrix of variables](CorrelationMatrix_among_var-1.png)
 * dtr-1.png
 ![](dtr-1.png)
 * dtr_plot-1.png
