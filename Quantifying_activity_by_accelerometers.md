@@ -60,7 +60,7 @@ corrplot(corGraph, order = "FPC", method = "number", type = "lower",
          tl.cex = 0.8, tl.col = rgb(0, 0, 0),number.cex = 0.7, number.digits = 2)
 ```
 
-![](Quantifying_activity_by_accelerometers_files/figure-markdown_github/CorrelationMatrix_among_var-1.png)
+![](CorrelationMatrix_among_var-1.png)
 
 There are several variables that are highly correlated (&gt;0.90 or &lt; -0.90). In order to save the calculating source, we are going to remove some of the variables.
 
