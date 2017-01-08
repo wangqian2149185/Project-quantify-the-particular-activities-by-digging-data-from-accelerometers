@@ -12,6 +12,11 @@ The goal of your project is to predict the manner in which they did the exercise
 
 The codes and the results are shown in the .md file: [Quantifying_activity_by_accelerometers.md](https://github.com/wangqian2149185/Project-quantify-the-particular-activities-by-digging-data-from-accelerometers/blob/master/Quantifying_activity_by_accelerometers.md)
 
+## Raw data source
+The data set for training: [https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv)
+The data set for the 20 quiz test:[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv)
+
+
 ## Components:
 * README.md
 * dtr-1.png
