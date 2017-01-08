@@ -16,10 +16,12 @@ The codes and the results are shown in the .md file: [Quantifying_activity_by_ac
 
 
 ## Repository components
-* ![](unnamed-chunk-4-1.png)
+* README.md
 * [Quantifying_activity_by_accelerometers.md](Quantifying_activity_by_accelerometers.md)
 * [Quantifying_activity_by_accelerometers.Rmd](Quantifying_activity_by_accelerometers.Rmd)
-* README.md
+* unnamed-chunk-4-1.png
+* ![correlation matrix of variables](unnamed-chunk-4-1.png)
+
 * dtr-1.png
 ![](dtr-1.png)
 * dtr_plot-1.png
@@ -28,6 +30,5 @@ The codes and the results are shown in the .md file: [Quantifying_activity_by_ac
 ![](gbm_plot-1.png)
 * rf_plot-1.png
 ![](rf_plot-1.png)
-* unnamed-chunk-4-1.png
 
 
